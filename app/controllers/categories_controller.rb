@@ -17,11 +17,10 @@ class CategoriesController < ApplicationController
       render :new
     end
   end
-  #
-  # def show
-  #   company = Company.find(params[:id])
-  #   redirect_to company_jobs_path(company)
-  # end
+
+  def show
+    @category = Category.find(params[:id])
+  end
   #
   # def edit
   #   @company = Company.find(params[:id])
@@ -47,6 +46,7 @@ class CategoriesController < ApplicationController
   # end
   #
   #
+
   private
 
   def category_params
