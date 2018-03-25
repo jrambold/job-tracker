@@ -1,5 +1,3 @@
-require 'pry'
-
 class JobsController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
@@ -15,7 +13,6 @@ class JobsController < ApplicationController
   def create
     @company = Company.find(params[:company_id])
     @categories = Category.all
-    binding.pry
     @job = @company.jobs.new(job_params)
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"

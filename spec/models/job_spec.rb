@@ -14,15 +14,16 @@ describe Job do
       end
 
       it "is invalid without a city" do
-        job = Job.new(title: "Developer", description: "Wahoo", level_of_interest: 80)
+        job = Job.new(title: "Developer", description: "Wahoo", level_of_interest: 80, )
         expect(job).to be_invalid
       end
     end
 
     context "valid attributes" do
-      it "is valid with a title, level of interest, and company" do
+      it "is valid with a title, level of interest, category, and company" do
         company = Company.new(name: "Turing")
-        job = Job.new(title: "Developer", level_of_interest: 40, city: "Denver", company: company)
+        category = Category.create!(title: "Category")
+        job = Job.new(title: "Developer", level_of_interest: 40, city: "Denver", company: company, category_id: category.id)
         expect(job).to be_valid
       end
     end
