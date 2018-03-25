@@ -21,21 +21,22 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
   end
-  #
-  # def edit
-  #   @company = Company.find(params[:id])
-  # end
-  #
-  # def update
-  #   @company = Company.find(params[:id])
-  #   @company.update(company_params)
-  #   if @company.save
-  #     flash[:success] = "#{@company.name} updated!"
-  #     redirect_to company_path(@company)
-  #   else
-  #     render :edit
-  #   end
-  # end
+
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    @category.update(category_params)
+    if @category.save
+      flash[:success] = "#{@category.title} updated!"
+      redirect_to categories_path
+    else
+      flash[:error] = 'That category already exists, please try again'
+      render :edit
+    end
+  end
   #
   # def destroy
   #   company = Company.find(params[:id])
