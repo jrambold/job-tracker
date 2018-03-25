@@ -37,16 +37,14 @@ class CategoriesController < ApplicationController
       render :edit
     end
   end
-  #
-  # def destroy
-  #   company = Company.find(params[:id])
-  #   company.destroy
-  #
-  #   flash[:success] = "#{company.name} was successfully deleted!"
-  #   redirect_to companies_path
-  # end
-  #
-  #
+
+  def destroy
+    category = Category.find(params[:id])
+    category.destroy
+
+    flash[:success] = "#{category.title} was successfully deleted!"
+    redirect_to categories_path
+  end
 
   private
 
