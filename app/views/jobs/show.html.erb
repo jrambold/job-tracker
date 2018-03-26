@@ -11,3 +11,17 @@ City: <%= @job.city %>
 <br>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+
+Add A Comment:
+<%= form_for [@company, @job, @comment] do |f| %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+  <%= f.submit %>
+<% end %>
+
+Comments:
+<% @comments.each do |comment| %>
+  <%= comment.content %>
+<% end %>
