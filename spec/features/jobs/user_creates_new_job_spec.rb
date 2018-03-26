@@ -20,5 +20,6 @@ describe "User creates a new job" do
     expect(page).to have_content("Developer")
     expect(page).to have_content("80")
     expect(page).to have_content("Denver")
+    binding.pry
   end
 end
