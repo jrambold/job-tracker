@@ -1,12 +1,35 @@
-<p>All Jobs
+<h1>All Jobs
 <% if @company %>
 for <%= @company.name %>
 <% end %>
-</p>
-<% @jobs.each do |job| %>
-  <ul>
-    <%= link_to job.title, job_path(job) %>
-    <%= link_to "Edit", edit_job_path(job) %>
-    <%= link_to "Delete", job_path(job), method: "delete" %>
-  </ul>
-<% end %>
+</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <% unless @company %>
+        <th scope="col">Company</th>
+      <% end %>
+      <th scope="col">Make changes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jobs.each do |job| %>
+    <tr>
+      <th scope="row">
+        <%= link_to job.title, job_path(job) %>
+      </th>
+      <% unless @company %>
+      <td>
+        <%= link_to "#{job.company.name}", company_path(job.company) %>
+      </td>
+      <% end %>
+      <td>
+        <%= link_to "Edit", edit_job_path(job) %>
+        <%= link_to "Delete", job_path(job), method: "delete" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

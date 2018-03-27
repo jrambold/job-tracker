@@ -9,5 +9,6 @@ describe "User" do
   end
   scenario "A user can navigate around the site" do
     visit root_path
+
   end
 end
