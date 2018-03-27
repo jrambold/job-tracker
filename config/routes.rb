@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :jobs, only: [:index]
+
   resources :categories do
   end
   # The priority is based upon order of creation: first created -> highest priority.
