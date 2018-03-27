@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :companies, shallow: true do
+  resources :companies do
     resources :contacts
     resources :jobs do
       resources :comments do
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :jobs, only: [:index]
+  resources :jobs, only: [:index, :edit, :show, :update, :destroy]
 
   resources :categories do
   end

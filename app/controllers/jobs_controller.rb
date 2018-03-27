@@ -29,6 +29,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @company = @job.company
     @comments = @job.comments
     @comment = Comment.new
   end
@@ -40,12 +41,12 @@ class JobsController < ApplicationController
   end
 
   def update
-    @company = Company.find(params[:company_id])
+    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @job.update(job_params)
     if @job.save
       flash[:success] = "#{@job.title} updated!"
-      redirect_to company_job_path(@company, @job)
+      redirect_to job_path(@job)
     else
       render :edit
     end
