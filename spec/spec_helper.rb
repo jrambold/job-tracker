@@ -97,3 +97,10 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+#
+# require 'database_cleaner'
+#
+# DatabaseCleaner.strategy = :truncation
+#
+# # then, whenever you need to clean the DB
+# DatabaseCleaner.clean
