@@ -49,7 +49,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    binding.pry
     params.require(:category).permit(:title)
   end
 end

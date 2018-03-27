@@ -5,7 +5,7 @@ describe "User deletes existing category" do
     category = Category.create!(title: "Category")
     visit categories_path
 
-    within(".category_#{category.id}") do
+    within("td") do
       click_link "Delete"
     end
 
