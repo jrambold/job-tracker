@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # root 'companies#index'
+  root controller: 'welcome', action: :index
+
   resources :companies do
     resources :contacts
     resources :jobs do
