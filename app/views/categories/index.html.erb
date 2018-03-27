@@ -16,7 +16,7 @@
       <td>
         <%= link_to "Jobs: #{category.jobs.count}", category_path(category) %>
       </td>
-      <td>
+      <td id='links'>
         <%= link_to "Edit", edit_category_path(category) %>
         <%= link_to "Delete", category_path(category), method: "delete" %>
       </td>

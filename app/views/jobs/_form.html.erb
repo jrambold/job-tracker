@@ -1,33 +1,9 @@
-<!-- <%= form_for [@company, @job] do |f| %>
-
-  <%= f.label :category_id %>
-  <%= f.collection_select :category_id, @categories, :id, :title %>
-
-  <% unless @company %>
-    <%= f.label :company_id %>
-    <%= f.collection_select :company_id, @companies, :id, :name %>
-  <% end %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.label :level_of_interest %>
-  <%= f.number_field :level_of_interest %>
-
-  <%= f.label :city %>
-  <%= f.text_field :city %>
-
-  <%= f.submit %>
-<% end %> -->
-
 <%= form_for [@company, @job], :html => {:class => "form-horizontal center"} do |f| %>
 
   <div class="form-group">
     <%= f.label :category_id, "Category", class: "col-md-4 control-label" %>
     <%= f.collection_select :category_id, @categories, :id, :title %>
+    <%= link_to "Create a new category", new_category_path %>
   </div>
 
   <div class="form-group">
@@ -54,7 +30,7 @@
   <div class="form-group">
     <%= f.label :level_of_interest, "Level of Interest", class: "col-md-4 control-label" %>
     <div class="col-md-8">
-      <%= f.text_field :level_of_interest, class: "form-control" %>
+      <%= f.number_field :level_of_interest, class: "form-control" %>
     </div>
   </div>
 
