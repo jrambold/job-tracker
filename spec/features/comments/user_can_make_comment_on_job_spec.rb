@@ -6,12 +6,12 @@ describe "User sees one job" do
     category = Category.create!(title: "Category")
     job = company.jobs.create!(title: "Developer", level_of_interest: 90, city: "Denver", category_id: category.id)
 
-    visit company_job_path(company, job)
+    visit job_path(job)
 
     fill_in "comment[content]", with: "Adding a comment"
     click_button "Create Comment"
 
-    expect(current_path).to eq(company_job_path(company, job))
+    expect(current_path).to eq(job_path(job))
     expect(page).to have_content("Adding a comment")
     expect(Comment.all.count).to eq(1)
   end
