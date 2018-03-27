@@ -6,12 +6,12 @@ describe "User edits an existing company" do
     category = Category.create!(title: "Category")
     job = company.jobs.create!(title: "Developer", level_of_interest: 90, city: "Denver", category_id: category.id)
 
-    visit edit_company_job_path(company, job)
+    visit edit_job_path(job)
 
     fill_in "job[title]", with: "BBaller"
     click_button "Update"
 
-    expect(current_path).to eq("/companies/#{company.id}/jobs/#{Job.last.id}")
+    expect(current_path).to eq("/jobs/#{Job.last.id}")
     expect(page).to have_content("BBaller")
     expect(page).to_not have_content("Developer")
   end
