@@ -9,6 +9,18 @@ describe "User sees one company" do
     expect(current_path).to eq("/companies/#{company.id}")
     expect(page).to have_content("ESPN")
   end
+  scenario "a user sees a company contact" do
+    company = Company.create!(name: "ESPN")
+    contact = company.contacts.create!(name: "Adam", role: "CEO", email: "adam.n.conway@gmail.com")
+
+    visit company_path(company)
+
+    expect(page).to have_content("adam.n.conway@gmail.com")
+
+    click_on("Delete")
+
+    expect(page).to_not have_content("adam.n.conway@gmail.com")
+  end
   describe "User clicks links" do
     scenario "User clicks jobs link for company" do
       company = Company.create!(name: "ESPN")
