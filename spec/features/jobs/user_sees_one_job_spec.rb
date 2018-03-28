@@ -6,9 +6,9 @@ describe "User sees one job" do
     category = Category.create!(title: "Category")
     company.jobs.create!(title: "Developer", level_of_interest: 90, city: "Denver", category_id: category.id)
 
-    visit company_path(company)
+    visit job_path(company.jobs.first)
 
-    expect(current_path).to eq("/companies/#{company.id}")
+    expect(current_path).to eq("/jobs/1")
     expect(page).to have_content("ESPN")
     expect(page).to have_content("Developer")
   end
