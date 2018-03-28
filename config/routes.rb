@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   root controller: 'dashboard', action: :index
 
   resources :companies do
-    resources :contacts
+    resources :contacts, only: [:create, :destroy, :edit, :update]
     resources :jobs do
-      resources :comments do
-      end
+      resources :comments, only: [:create]
     end
   end
 
