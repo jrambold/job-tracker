@@ -13,7 +13,7 @@
       <th scope="row"><%= link_to company.name, company_path(company) %></th>
       <td>
         <%= link_to "Edit", edit_company_path(company) %>
-        <%= link_to "Delete", company_path(company), method: "delete" %>
+        <%= link_to "Delete", company_path(company), method: :delete %>
       </td>
     </tr>
     <% end %>
