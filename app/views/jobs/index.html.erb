@@ -1,4 +1,4 @@
-<h1>All Jobs
+<h1><%= @type %> Jobs
 <% if @company %>
 for <%= @company.name %></br>
 <%= link_to "Create a new job for #{@company.name}", new_company_job_path(@company) %>
@@ -29,7 +29,7 @@ for <%= @company.name %></br>
       </td>
       <% end %>
       <td>
-        <p><%= job.city %></p>
+        <p><%= link_to job.city, "/jobs?location=#{job.city}" %></p>
       </td>
       <td>
         <p><%= job.level_of_interest %></p>
