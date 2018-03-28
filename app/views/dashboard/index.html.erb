@@ -1,61 +1,36 @@
-<!-- <p>
-  Job Tracker
-</p>
-<div class="dashboard">
-  Jobs by Interest
-  <ul>
-    <% @interest.each do |i| %>
-      <li><%= i[0] %> (<%= i[1] %> jobs)</li>
-    <% end %>
-  </ul>
-</div>
-<div class="dashboard">
-  Top Companies by Interest
-  <ul>
-  <% @top.each do |company| %>
-    <li><%= company.name %> (<%= company.job_interest.round(1) %> stars)</li>
-  <% end %>
-</ul>
-</div>
-<h5>Jobs by Location</h5>
-<ul>
-  <% @locations.each do |location| %>
-    <li><%= location[0] %> (<%= location[1] %> jobs)</li>
-  <% end %>
-<ul> -->
-
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Jobs by Interest</h5>
-    <h6 class="card-subtitle mb-2 text-muted">View jobs sorted by interest groups</h6>
-    <p class="card-text">
-      <% @interest.each do |i| %>
-        <li><%= i[0] %> (<%= i[1] %> jobs)</li>
-      <% end %>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+<div class="row">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Jobs by Interest</h5>
+      <h6 class="card-subtitle mb-2 text-muted">View jobs sorted by interest groups</h6>
+      <p class="card-text">
+        <% @interest.each do |i| %>
+          <li><%= i[0] %> (<%= i[1] %> jobs)</li>
+        <% end %>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
   </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Companies by Interest</h5>
-    <h6 class="card-subtitle mb-2 text-muted">View top 3 companies sorted by interest</h6>
-    <p class="card-text">
-      <% @top.each do |company| %>
-        <li><%= company.name %> (<%= company.job_interest.round(1) %> stars)</li>
-      <% end %>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Companies by Interest</h5>
+      <h6 class="card-subtitle mb-2 text-muted">View top 3 companies sorted by interest</h6>
+      <p class="card-text">
+        <% @top.each do |company| %>
+          <li><%= link_to "#{company.name}", company_jobs_path(company) %> (<%= company.job_interest.round(1) %> stars)</li>
+        <% end %>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
   </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Locations by Interest</h5>
-    <p class="card-text">
-      <% @locations.each do |location| %>
-        <li><%= location[0] %> (<%= location[1] %> jobs)</li>
-      <% end %>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Locations by Interest</h5>
+      <p class="card-text">
+        <% @locations.each do |location| %>
+          <li><%= link_to "#{location[0]} jobs", "/jobs?location=#{location[0]}" %> (<%= location[1] %> jobs)</li>
+        <% end %>
+      <a href="/jobs?sort=location" class="card-link">All Jobs by Location</a>
+    </div>
   </div>
 </div>
