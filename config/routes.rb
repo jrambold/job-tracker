@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root controller: 'dasahboard', action: :index
+  root controller: 'dashboard', action: :index
 
   resources :companies do
     resources :contacts
