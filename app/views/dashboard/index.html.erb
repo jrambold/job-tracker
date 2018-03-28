@@ -22,7 +22,7 @@
   </div>
   <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">Locations by Interest</h5>
+      <h5 class="card-title">Jobs by Location</h5>
       <p class="card-text">
         <% @locations.each do |location| %>
           <li><%= link_to "#{location[0]} jobs", "/jobs?location=#{location[0]}" %> (<%= location[1] %> jobs)</li>
