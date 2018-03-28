@@ -46,6 +46,7 @@ group :development, :test do
   gem 'pry'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
+  gem 'simplecov'
 end
 
 group :development do
