@@ -1,3 +1,4 @@
+<h1>Dashboard</h1>
 <div class="row">
   <div class="card" style="width: 18rem;">
     <div class="card-body">
@@ -7,8 +8,6 @@
         <% @interest.each do |i| %>
           <li><%= i[0] %> (<%= i[1] %> jobs)</li>
         <% end %>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
     </div>
   </div>
   <div class="card" style="width: 18rem;">
@@ -19,8 +18,6 @@
         <% @top.each do |company| %>
           <li><%= link_to "#{company.name}", company_jobs_path(company) %> (<%= company.job_interest.round(1) %> stars)</li>
         <% end %>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
     </div>
   </div>
   <div class="card" style="width: 18rem;">
