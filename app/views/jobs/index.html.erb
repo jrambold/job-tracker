@@ -1,6 +1,7 @@
 <h1>All Jobs
 <% if @company %>
-for <%= @company.name %>
+for <%= @company.name %></br>
+<%= link_to "Create a new job for #{@company.name}", new_company_job_path(@company) %>
 <% end %>
 </h1>
 
