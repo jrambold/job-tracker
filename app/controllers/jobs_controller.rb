@@ -6,7 +6,13 @@ class JobsController < ApplicationController
     else
       if params[:sort] || params[:category] || params[:location]
         @jobs = Job.evaluate_sort_params(params)
+        if params[:category]
+          @type = params[:category]
+        elsif params[:location]
+          @type = params[:location]
+        end
       else
+        @type = 'All'
         @jobs = Job.all
       end
     end
