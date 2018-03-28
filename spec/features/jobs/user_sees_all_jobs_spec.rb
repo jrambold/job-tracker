@@ -57,7 +57,7 @@ describe "User sees all jobs" do
 
       expect(current_path).to eq(edit_job_path(job1))
     end
-    scenario "User clicks job edit link" do
+    scenario "User clicks job delete link" do
       company = Company.create!(name: "ESPN")
       category = Category.create!(title: "Category")
       job1 = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category_id: category.id)
