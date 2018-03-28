@@ -35,4 +35,27 @@ describe Job do
       expect(job).to respond_to(:company)
     end
   end
+
+  describe "methods" do
+    it "groups jobs by interest level" do
+      company = Company.create!(name: "Turing")
+      category = Category.create!(title: "Category")
+      job1 = Job.create!(title: "Developer", level_of_interest: 5, city: "Denver", company_id: company.id, category_id: category.id)
+      job2 = Job.create!(title: "Developer", level_of_interest: 40, city: "Denver", company_id: company.id, category_id: category.id)
+      job3 = Job.create!(title: "Developer", level_of_interest: 60, city: "Denver", company_id: company.id, category_id: category.id)
+      job4 = Job.create!(title: "Developer", level_of_interest: 80, city: "Denver", company_id: company.id, category_id: category.id)
+      job5 = Job.create!(title: "Developer", level_of_interest: 110, city: "Denver", company_id: company.id, category_id: category.id)
+      @jobs = Job.grouped_interest
+
+      expected = {
+        "1 to 25"=>1,
+        "26 to 50"=>1,
+        "51 to 75"=>1,
+        "76 to 100"=>1,
+        "101 to 125"=>1
+      }
+
+      expect(@jobs).to eq(expected)
+    end
+  end
 end

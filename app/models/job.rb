@@ -20,19 +20,23 @@ class Job < ApplicationRecord
       "101 to 125" => 0
     }
     interest_count.each do |interest, jobs|
-      if group_range[0].include?(interest)
-        groups["1 to 25"] += jobs
-      elsif group_range[1].include?(interest)
-        groups["26 to 50"] += jobs
-      elsif group_range[2].include?(interest)
-        groups["51 to 75"] += jobs
-      elsif group_range[3].include?(interest)
-        groups["76 to 100"] += jobs
-      elsif group_range[4].include?(interest)
-        groups["101 to 125"] += jobs
-      end
+      build_hash(interest, jobs, groups, group_range)
     end
     groups
+  end
+
+  def self.build_hash(interest, jobs, groups, group_range)
+    if group_range[0].include?(interest)
+      groups["1 to 25"] += jobs
+    elsif group_range[1].include?(interest)
+      groups["26 to 50"] += jobs
+    elsif group_range[2].include?(interest)
+      groups["51 to 75"] += jobs
+    elsif group_range[3].include?(interest)
+      groups["76 to 100"] += jobs
+    elsif group_range[4].include?(interest)
+      groups["101 to 125"] += jobs
+    end
   end
 
   def self.by_location
