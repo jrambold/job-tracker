@@ -10,6 +10,31 @@ class Job < ApplicationRecord
       .count
   end
 
+  def self.grouped_interest
+    group_range = [(1..25), (26..50), (51..75), (76..100), (101..125)]
+    groups = {
+      "1 to 25" => 0,
+      "26 to 50" => 0,
+      "51 to 75" => 0,
+      "76 to 100" => 0,
+      "101 to 125" => 0
+    }
+    interest_count.each do |interest, jobs|
+      if group_range[0].include?(interest)
+        groups["1 to 25"] += jobs
+      elsif group_range[1].include?(interest)
+        groups["26 to 50"] += jobs
+      elsif group_range[2].include?(interest)
+        groups["51 to 75"] += jobs
+      elsif group_range[3].include?(interest)
+        groups["76 to 100"] += jobs
+      elsif group_range[4].include?(interest)
+        groups["101 to 125"] += jobs
+      end
+    end
+    groups
+  end
+
   def self.by_location
     Job.group(:city)
       .count
