@@ -3,10 +3,23 @@
 </p>
 <div class="dashboard">
   Jobs by Interest
+  <ul>
+    <% @interest.each do |i| %>
+      <li><%= i[0] %> (<%= i[1] %> jobs)</li>
+    <% end %>
+  </ul>
 </div>
 <div class="dashboard">
   Top Companies by Interest
+  <ul>
+  <% @top.each do |company| %>
+    <li><%= company.name %> (<%= company.job_interest.round(1) %> stars)</li>
+  <% end %>
+</ul>
 </div>
+<h5>Jobs by Location</h5>
 <ul>
-  <li>Jobs by Location</li>
+  <% @locations.each do |location| %>
+    <li><%= location[0] %> (<%= location[1] %> jobs)</li>
+  <% end %>
 <ul>
