@@ -12,8 +12,8 @@ for <%= @company.name %></br>
       <% unless @company %>
         <th scope="col">Company</th>
       <% end %>
-      <th scope="col">City</th>
-      <th scope="col">Level Of Interest</th>
+      <th scope="col"><%= link_to "City", "/jobs?sort=location" %></th>
+      <th scope="col"><%= link_to "Level of Interest", "/jobs?sort=interest" %></th>
       <th scope="col">Make changes</th>
     </tr>
   </thead>
