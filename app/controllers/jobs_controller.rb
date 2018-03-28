@@ -4,7 +4,12 @@ class JobsController < ApplicationController
       @company = Company.find(params[:company_id])
       @jobs = @company.jobs
     else
-      @jobs = Job.all
+      if params[:sort]
+        jobs = Job.all
+        @jobs = jobs.evaluate_sort_params(params)
+      else
+        @jobs = Job.all
+      end
     end
   end
 
@@ -46,7 +51,6 @@ class JobsController < ApplicationController
   end
 
   def update
-    # @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @job.update(job_params)
     if @job.save
