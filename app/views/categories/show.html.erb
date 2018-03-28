@@ -1,5 +1,35 @@
-All Jobs for <strong><%= @category.title %></strong>
+<h1>All Jobs for <strong><%= @category.title %></strong></h2>
 
-<% @category.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
-<% end %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Company</th>
+      <th scope="col">City</th>
+      <th scope="col">Level Of Interest</th>
+      <th scope="col">Make changes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @category.jobs.each do |job| %>
+    <tr>
+      <th scope="row">
+        <%= link_to job.title, job_path(job) %>
+      </th>
+      <td>
+        <%= link_to "#{job.company.name}", company_path(job.company) %>
+      </td>
+      <td>
+        <p><%= job.city %></p>
+      </td>
+      <td>
+        <p><%= job.level_of_interest %></p>
+      </td>
+      <td>
+        <%= link_to "Edit", edit_job_path(job) %>
+        <%= link_to "Delete", job_path(job), method: "delete" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

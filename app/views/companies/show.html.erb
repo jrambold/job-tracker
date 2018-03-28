@@ -1,27 +1,58 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h1><strong><%= @company.name %></strong></h1></br>
 
-<% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
-<% end %>
+<%= link_to "Check out #{@company.name}'s jobs!", company_jobs_path(@company) %></br>
 
-Add A Contact:
-<%= form_for [@company, @contact] do |f| %>
+<h3>Add a contact for <%= @company.name %></h3>
+<%= form_for [@company, @contact], :html => {:class => "form-inline center"} do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Name", class: "col-md-2 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :role, "Role", class: "col-md-2 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :role, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, "Email", class: "col-md-2 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.submit class: "btn btn-default btn-primary" %>
+<% end %></br>
 
-  <%= f.label :role %>
-  <%= f.text_field :role %>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.submit %>
-<% end %>
-
-Contacts:
-<% @contacts.each do |contact| %>
-  <%= contact.name %>
-  <%= contact.role %>
-  <%= contact.email %>
-<% end %>
+<h3>Contacts:</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Role</th>
+      <th scope="col">Email</th>
+      <th scope="col">Make Changes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @company.contacts.each do |contact| %>
+    <tr>
+      <th>
+        <p><%= contact.name %></p>
+      </th>
+      <td>
+        <p><%= contact.role %></p>
+      </td>
+      <td>
+        <p><%= contact.email %></p>
+      </td>
+      <td>
+        <%= link_to "Edit", edit_company_contact_path(@company, contact) %>
+        <%= link_to "Delete", company_contact_path(@company, contact), method: :delete %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

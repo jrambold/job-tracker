@@ -1,24 +1,45 @@
-<%= form_for [@company, @job] do |f| %>
+<%= form_for [@company, @job], :html => {:class => "form-horizontal center"} do |f| %>
 
-  <%= f.label :category_id %>
-  <%= f.collection_select :category_id, @categories, :id, :title %>
+  <div class="form-group">
+    <%= f.label :category_id, "Category", class: "col-md-4 control-label" %>
+    <%= f.collection_select :category_id, @categories, :id, :title %>
+    <%= link_to "Create a new category", new_category_path %>
+  </div>
 
+  <div class="form-group">
   <% unless @company %>
-    <%= f.label :company_id %>
+    <%= f.label :company_id, "Company", class: "col-md-4 control-label" %>
     <%= f.collection_select :company_id, @companies, :id, :name %>
   <% end %>
+  </div>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title, "Title", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <div class="form-group">
+    <%= f.label :description, "Description", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :level_of_interest %>
-  <%= f.number_field :level_of_interest %>
+  <div class="form-group">
+    <%= f.label :level_of_interest, "Level of Interest", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.number_field :level_of_interest, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+  <div class="form-group">
+    <%= f.label :city, "City", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-default btn-primary" %>
 <% end %>

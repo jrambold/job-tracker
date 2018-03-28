@@ -1,6 +1,10 @@
-<%= form_for @category do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<%= form_for @category, :html => {:class => "form-horizontal center"} do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "Title", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-default btn-primary" %>
 <% end %>

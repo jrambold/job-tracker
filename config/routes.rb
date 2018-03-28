@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root controller: 'welcome', action: :index
+
   resources :companies do
     resources :contacts
     resources :jobs do
@@ -6,7 +8,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  
   resources :jobs
 
   resources :categories

@@ -1,11 +1,26 @@
 <h3>All Categories</h3>
+<%= link_to "Create a new category", new_category_path %>
 
-<ul>
-  <% @categories.each do |category| %>
-  <li class=category_<%= category.id %>>
-    <%= link_to category.title, category_path(category) %>:
-    <%= link_to "Edit", edit_category_path(category) %>
-    <%= link_to "Delete", category_path(category), method: "delete" %>
-  </li>
-  <% end %>
-</ul>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Jobs</th>
+      <th scope="col">Make changes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+      <th scope="row"><%= link_to category.title, category_path(category) %></th>
+      <td>
+        <%= link_to "Jobs: #{category.jobs.count}", category_path(category) %>
+      </td>
+      <td id='links'>
+        <%= link_to "Edit", edit_category_path(category) %>
+        <%= link_to "Delete", category_path(category), method: "delete" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
