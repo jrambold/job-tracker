@@ -1,5 +1,7 @@
-Title: <%= @job.title %>
-<br>
+<h1><%= @job.title %> at <%= @job.company.name %></h1>
+
+<%= link_to "See Other #{@job.category.title} Jobs",category_path(@job.category) %>
+
 
 Description: <%= @job.description %>
 <br>
